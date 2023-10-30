@@ -1,0 +1,131 @@
+import moment from "moment";
+
+const orderStatusOptions = [
+    {label: "PENDING", value: "PENDING"},
+    {label: "CONFIRMED", value: "CONFIRMED"},
+    {label: "PROCESSING", value: "PROCESSING"},
+    {label: "SHIPMENT", value: "SHIPMENT"},
+    {label: "DELIVERED", value: "DELIVERED"},
+    {label: "CANCELLED", value: "CANCELLED"},
+    {label: "EXPIRED", value: "EXPIRED"},
+];
+
+export const orderInfoFormFields = (data = null) => [
+    {
+        type: "text",
+        label: "Tracking ID",
+        name: "order_tracking_id",
+        placeholder: "Order tracking id",
+        defaultValue: data?.order_tracking_id || '',
+        required: false,
+        wrapperClass: "col-md-6",
+        disabled: true,
+    },
+    {
+        type: "text",
+        label: "Placement Time",
+        name: "order_placement_time",
+        placeholder: "Order placement time",
+        defaultValue: data?.order_placement_time 
+            ? moment(data?.order_placement_time, 'YYYY-MM-DD hh:mm:ss').format('DD-MM-YYYY hh:mm A').toString() : '',
+        required: false,
+        wrapperClass: "col-md-6",
+        disabled: true,
+    },
+    {
+        type: "text",
+        label: "Total Amount",
+        name: "total_amount",
+        placeholder: "Order total amount",
+        defaultValue: data?.total_amount || '',
+        required: false,
+        wrapperClass: "col-md-6",
+        disabled: true,
+    },
+    {
+        type: "select",
+        label: "Order Status",
+        name: "order_status",
+        placeholder: "Select status",
+        options: orderStatusOptions || [],
+        defaultValue: data?.order_status || '',
+        required: true,
+        wrapperClass: "col-md-6",
+    }
+];
+
+// export const shippingInfoFormFields = (data = null) => [
+//     {
+//         type: "text",
+//         label: "Customer Full Name",
+//         name: "customer_first_name",
+//         placeholder: "Customer full name",
+//         defaultValue: (data?.shipping_info?.customer_first_name || '') 
+//             + (data?.shipping_info?.customer_last_name ? (' ' + data?.shipping_info?.customer_last_name) : ''),
+//         required: true,
+//         wrapperClass: "col-md-6",
+//     },
+//     {
+//         type: "text",
+//         label: "Customer Mobile",
+//         name: "customer_mobile",
+//         placeholder: "Customer mobile",
+//         defaultValue: data?.shipping_info?.customer_mobile || '',
+//         required: true,
+//         wrapperClass: "col-md-6",
+//     },
+//     {
+//         type: "text",
+//         label: "Alternate Mobile",
+//         name: "customer_alternate_mobile",
+//         placeholder: "Customer alternate mobile",
+//         defaultValue: data?.shipping_info?.customer_alternate_mobile || '',
+//         required: false,
+//         wrapperClass: "col-md-6",
+//     },
+//     {
+//         type: "email",
+//         label: "Customer Email",
+//         name: "customer_email",
+//         placeholder: "Customer email",
+//         defaultValue: data?.shipping_info?.customer_email || '',
+//         required: true,
+//         wrapperClass: "col-md-6",
+//     },
+//     {
+//         type: "textarea",
+//         label: "Customer address",
+//         name: "customer_address",
+//         placeholder: "Customer address",
+//         defaultValue: data?.shipping_info?.customer_address || '',
+//         required: true,
+//         height: 50,
+//     },
+//     {
+//         type: "text",
+//         label: "Customer City",
+//         name: "customer_city",
+//         placeholder: "Customer city",
+//         defaultValue: data?.shipping_info?.customer_city || '',
+//         required: true,
+//         wrapperClass: "col-md-6",
+//     },
+//     {
+//         type: "text",
+//         label: "Customer Area",
+//         name: "customer_area",
+//         placeholder: "Customer area",
+//         defaultValue: data?.shipping_info?.customer_area || '',
+//         required: false,
+//         wrapperClass: "col-md-6",
+//     },
+//     {
+//         type: "text",
+//         label: "Customer Post Code",
+//         name: "customer_post_code",
+//         placeholder: "Customer post code",
+//         defaultValue: data?.shipping_info?.customer_post_code || '',
+//         required: false,
+//         wrapperClass: "col-md-6",
+//     },
+// ];
